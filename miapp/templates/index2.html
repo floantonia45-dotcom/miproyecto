@@ -156,7 +156,7 @@
             <div class="form">
                 <h2>Iniciar Sesión</h2>
                 <form method="POST" action="{% url 'login' %}">
-                    {% csrf_token %}
+                {% csrf_token %}
                     
                     <input type="hidden" name="action" value="login">
                     <label for="email_login">E-mail</label>
@@ -179,7 +179,7 @@
             <div class="form">
                 <h2>Registrarse</h2>
                 <form method="POST" action="{% url 'register' %}">
-                    {% csrf_token %}
+                {% csrf_token %}
                     
                     <input type="hidden" name="action" value="register">
 
