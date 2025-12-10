@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutri Fit - Acceso</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        
+        header {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+        }
+        
+        .right {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .left {
+            flex: 1;
+            background: #63a6c4;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .nav {
+            display: flex;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .nav button {
+            margin-right: 30px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        
+        .nav .active {
+            background-color: #3d8b37;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .nav .inactive {
+            background-color: #7ad07a;
+            color: black;
+        }
+        
+        .form h2::after {
+            content: '';
+            display: block;
+            width: 253px;
+            height: 3px;
+            background: #3d8b37;
+        }
+        
+        .form h2 {
+            font-size: 40px;
+        }
+        
+        .form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .form input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid black;
+            background: transparent;
+            font-size: 20px;
+        }
+        
+        .form a {
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+        }
+        
+        .form button {
+            margin-top: 30px;
+            background: #3d8b37;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 170px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+            font-size: 20px;
+        }
+        
+        .quote {
+            font-size: 40px;
+            font-weight: bold;
+            line-height: 1.5;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        .left img {
+            max-width: 60%;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+    <header>NUTRI FIT</header>
+
+    <div class="right">
+        {% if form_type == 'login' %}
+            <div class="nav">
+                <button class="active">Iniciar sesión</button>
+                <a href="?form=register"><button class="inactive">Inscribirse</button></a>
+            </div>
+
+            <div class="form">
+                <h2>Iniciar Sesión</h2>
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    
+                    <input type="hidden" name="action" value="login">
+                    <label for="email_login">E-mail</label>
+                    <input type="email" id="email_login" name="email" required>
+
+                    <label for="password_login">Contraseña</label>
+                    <input type="password" id="password_login" name="password" required>
+
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+
+                    <button type="submit" name="login">Iniciar sesión</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="nav">
+                <a href="?form=login"><button class="inactive">Iniciar sesión</button></a>
+                <button class="active">Inscribirse</button>
+            </div>
+
+            <div class="form">
+                <h2>Registrarse</h2>
+                <form method="POST" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    
+                    <input type="hidden" name="action" value="register">
+
+                    <label for="username_register">Nombre de usuario</label>
+                    <input type="text" id="username_register" name="username" required>
+                    
+                    <label for="email_register">E-mail</label>
+                    <input type="email" id="email_register" name="email" required>
+
+                    <label for="password_register">Contraseña</label>
+                    <input type="password" id="password_register" name="password" required>
+
+                    <button type="submit" name="register">Registrarse</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="left">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Ejercicio">
+        <p class="quote">Un cuerpo<br> sano es un<br>recinto para el<br> alma</p>
+    </div>
+</div>
+</body>
+</html>

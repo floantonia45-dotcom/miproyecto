@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFit</title>
+
+    
+    <style>
+
+        body {
+            font-family: Georgia, serif;
+        }
+
+        /* ----------- ENCABEZADO ----------- */
+        .titulo-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 30px;
+            margin-bottom: 40px;
+        }
+
+        .icono-aguacate {
+            height: 50px;
+        }
+
+        /* ----------- CONTENEDOR PRINCIPAL ----------- */
+        .main-content {
+          
+            justify-content: space-between;
+        }
+
+        .columna-recetas,
+        .columna-acciones {
+            width: 50%;
+        }
+
+        /* ----------- TÍTULOS ----------- */
+        h1 {
+            font-size: 35px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 25px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* ----------- LISTA DE RECETAS ----------- */
+        .receta-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            width: 90%;
+        }
+
+        /* ----------- ACCIONES (editar y eliminar) ----------- */
+        .acciones-links a {
+            font-size: 22px;
+            text-decoration: none;
+            color: black;
+            margin-left: 20px;
+           
+        }
+
+        /* ----------- NUEVA RECETA ----------- */
+        .nueva-receta-titulo {
+            margin-top: 60px;
+        }
+
+        .imagenes-receta {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 40px;
+        }
+
+        .imagen-contenedor {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 5px;
+           
+        }
+
+        
+
+        .titulo-superpuesto {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+    </style>
+
+</head>
+<body>
+<h1 class="titulo-logo">
+    Nutri Fit
+    <img src="https://thumbs.dreamstime.com/b/dibujo-de-aguacate-icono-negro-aislado-sobre-fondo-blanco-plano-animado-vector-ilustraci%C3%B3n-comida-saludable-fruta-tropical-210907294.jpg" class="icono-aguacate">
+</h1>
+
+<div class="main-content">
+
+    <div class="columna-recetas">
+    <h1>Recetas</h1>
+
+    <!-- 🔥 RECETAS QUE EL USUARIO HA CREADO (DINÁMICAS) -->
+    {% if recetas %}
+        {% for r in recetas %}
+        <div class="receta-item">
+            <h3>{{ r.titulo }}</h3>
+
+            <div class="acciones-links">
+                <a href="{% url 'editar_receta' r.id %}">Editar</a>
+                <a href="{% url 'confirmar_eliminar' r.id %}">Eliminar</a>
+
+
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="font-size: 20px;">No tienes recetas guardadas todavía.</p>
+    {% endif %}
+</div>
+
+<h1 class="nueva-receta-titulo">Añadir una nueva receta</h1>
+
+<div class="imagenes-receta">
+    <div class="imagen-contenedor">
+         <img src="https://www.shutterstock.com/image-photo/food-products-recommended-osteoporosis-healthy-260nw-2596052607.jpg">
+         <a href="{% url 'index8' %}">
+           <span class="titulo-superpuesto">Comidas</span> 
+         </a> 
+    </div>
+    
+    <div class="imagen-contenedor"> 
+        <img src="https://backend.shaio.org/sites/default/files/blog/frutas-saludables.jpg">
+        <a href="{% url 'index8' %}">
+            <span class="titulo-superpuesto">Batidos</span> 
+        </a>
+            
+    </div> 
+   
+ </div>
+
+</body>
+</html>

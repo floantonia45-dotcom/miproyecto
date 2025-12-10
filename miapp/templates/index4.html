@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    
+body {
+    font-family: Georgia, serif;
+}
+
+/* --- LOGO + TEXTO --- */
+.titulo-logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 30px;
+    white-space: nowrap;
+    
+}
+
+.icono-aguacate {
+    height: 50px;
+}
+
+/* --- BOTÓN --- */
+.button-blue {
+    min-width: 140px;
+    height: 40px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #48724d;
+    color: #48724d;
+    font-size: 20px;
+    margin: 10px 0 0 600px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0 0 0 1500px;
+
+   
+}
+
+.button-blue:hover {
+    color: #fff;
+}
+
+.button-blue::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #48724d;
+}
+
+.button-blue:hover::after {
+    width: 100%;
+}
+
+/* ---------- TITULOS DE CATEGORIA ---------- */
+h2 {
+    background-color: #48724d;
+    color: white;
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 0 5px 5px 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin: 0;
+}
+
+/* ---------- GRID DE ELEMENTOS ---------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 50px;
+}
+
+.item {
+    width: 200px;
+    text-align: center;
+
+}
+
+.item img {
+    width: 200px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.item p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+    </style>
+
+</head>
+<body>
+
+    <h1 class="titulo-logo">
+        Nutri Fit
+        <img src="https://thumbs.dreamstime.com/b/dibujo-de-aguacate-icono-negro-aislado-sobre-fondo-blanco-plano-animado-vector-ilustraci%C3%B3n-comida-saludable-fruta-tropical-210907294.jpg" alt="Aguacate" class="icono-aguacate">
+        <a href="{% url 'crear_router' %}">
+            <button class="button-blue">Crear</button>
+        </a>
+
+
+    </h1>
+
+   
+
+    <!-- --------- COMIDAS --------- -->
+    <h2>Comidas</h2>
+
+    <div class="grid">
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.j3u5j3LHfywzfKQ5rsQkGwHaEg?w=270&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Ensalada de garbanzos con verduras</p>
+        </div>
+
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.fNHfT-QlB5AhDFKyOcWunQHaE7?w=249&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Arroz integral con verduras salteadas y tofu</p>
+        </div>
+
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.1vUGZySUPUjdXjds9XLXBwHaE8?w=252&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Filete de salmón con espárragos al horno</p>
+        </div>
+
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.Dkai8SPQUW3aPWbzb64JFQHaHa?w=174&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Tacos de pollo con tortillas integrales</p>
+        </div>
+    </div>
+
+    <!-- --------- BATIDOS --------- -->
+    <h2>Batidos</h2>
+
+    <div class="grid">
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.VfKbXeO1IKBA_GodjR2m8gHaE8?w=283&h=188&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Batido verde detox</p>
+        </div>
+
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.9VPuMns1ShKRsRO6XqkqeAHaE8?w=264&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Batido de fresa y avena</p>
+        </div>
+
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.xq8Uea21O-00ANQjzEv2hgHaEo?w=273&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Batido tropical</p>
+        </div>
+
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.C62sPsFmKi-DxpnaLJMQ_gHaET?w=324&h=188&c=7&r=0&o=7&cb=ucfimg2&dpr=1.3&pid=1.7&rm=3&ucfimg=1">
+            <p>Batido proteico de cacao</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Georgia, serif; 
+        }
+
+        /* ---------------- LOGO ---------------- */
+        .titulo-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 30px;
+            white-space: nowrap;
+        }
+
+        .icono-aguacate {
+            height: 50px;
+        }
+        /* ---------------- TEXTO ---------------- */
+        p {
+            text-align: center;
+            font-size: 3em;
+           
+        }
+
+        /* ---------------- BOTONES ---------------- */
+        .button-blue {
+            min-width: 140px;
+            height: 40px;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            outline: none;
+            border-radius: 5px;
+            z-index: 1;
+            background: #fff;
+            overflow: hidden;
+            border: 2px solid #48724d;
+            color: #48724d;
+            font-size: 20px;
+            margin: 100px 0 0 250px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .button-blue:hover {
+            color: #fff;
+        }
+
+        .button-blue::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            transition: all 0.3s ease;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: #48724d;
+        }
+
+        .button-blue:hover::after {
+            width: 100%;
+        }
+
+        /* ------------- FONDO DIAGONAL ---------------- */
+        .imagen-diagonal {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60%;
+            height: 60%;
+            background-size: cover;
+            clip-path: polygon(90% 10%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="titulo-logo">
+        Nutri Fit
+        <img src="https://thumbs.dreamstime.com/b/dibujo-de-aguacate-icono-negro-aislado-sobre-fondo-blanco-plano-animado-vector-ilustraci%C3%B3n-comida-saludable-fruta-tropical-210907294.jpg" alt="Aguacate" class="icono-aguacate">
+    </h1>
+
+    <p>¿Estas seguro de eliminar esta receta?</p>
+
+    <a href="{% url 'index5' %}">
+        <button class="button-blue">Cancelar</button>
+    </a>
+
+   <form method="POST" action="{% url 'eliminar_receta' receta.id %}">
+    {% csrf_token %}
+    <button type="submit" class="button-blue">Eliminar</button>
+   </form>
+
+
+
+    <!-- Imagen en la esquina DIAGONAL como en tu referencia -->
+    <div class="imagen-diagonal">
+        <img src="miapp/imagenes/sana.jpg">
+    </div>
+
+</body>
+</html>

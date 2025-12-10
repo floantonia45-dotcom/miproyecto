@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+         margin:20px; 
+         font-family: Georgia, serif;
+         
+        }
+        #nombre{
+          width:300px;
+           padding:6px; 
+           margin-bottom:10px;
+        }
+        #imagenUrl{
+          width:300px; 
+          padding:6px; 
+          margin-bottom:10px;
+        }
+        #ingredientes{
+           width:300px;
+            height:100px; 
+            padding:6px;
+            margin-bottom:10px;
+        }
+        #preparacion{
+          width:300px; 
+          height:100px;
+           padding:6px; 
+           margin-bottom:10px;
+        }
+        button{
+            padding:10px 20px;
+            background:#48724d; 
+            color:white; 
+            border:none; 
+            border-radius:6px; 
+            cursor:pointer;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+  
+    <h2>Crear tu propia receta</h2>
+    <form id="form-batido" method="POST" action="{% url 'index8' %}">
+        {% csrf_token %}
+        <label>Nombre de la receta:</label><br>
+        <input id="nombre" type="text" name="nombre" required><br>
+
+
+        <label>URL de la imagen:</label><br>
+        <input id="imagenUrl" type="url" name="imagenUrl" placeholder="https://..." ><br>
+
+
+        <label>Ingredientes:</label><br>
+        <textarea id="ingredientes" name="ingredientes" required></textarea><br>
+
+
+        <label>Preparación:</label><br>
+        <textarea id="preparacion" name="preparacion" required></textarea><br>
+
+
+        <button type="submit">Guardar receta</button>
+    </form>
+</body>
+</html>

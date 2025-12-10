@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ receta.titulo }}</title>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+        }
+        .titulo-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+        .icono-aguacate {
+            height: 50px;
+        }
+        .contenedor {
+            display: flex;
+            gap: 80px;
+            margin-top: 30px;
+            margin-left: 40px;
+        }
+        .imagen-smoothie img {
+            width: 220px;
+            border-radius: 12px;
+        }
+        .titulo-batidoss h2 {
+            background-color: #48724d;
+            color: white;
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 0 5px 5px 0;
+            margin: 0;
+        }
+        .titulo-smoothie {
+            margin-top: 15px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .texto {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1 class="titulo-logo">
+        Nutri Fit
+        <img src="/static/aguacate-9546.jpg" class="icono-aguacate">
+    </h1>
+
+    <div class="titulo-batidoss">
+        <h2>Batidos</h2>
+    </div>
+
+    <div class="contenedor">
+
+        <div class="imagen-smoothie">
+
+            {% if receta.imagen %}
+                <img src="{{ receta.imagen.url }}" alt="{{ receta.titulo }}">
+            {% elif receta.imagen_url %}
+                <img src="{{ receta.imagen_url }}" alt="{{ receta.titulo }}">
+            {% else %}
+                <img src="/static/img/default.jpg" alt="Sin imagen">
+            {% endif %}
+
+            <div class="titulo-smoothie">{{ receta.titulo }}</div>
+        </div>
+
+        <div class="texto">
+            <strong>Ingredientes:</strong><br><br>
+            {{ receta.ingredientes|linebreaks }}
+
+            <br><br><strong>Preparación:</strong><br><br>
+            {{ receta.preparacion|linebreaks }}
+        </div>
+
+    </div>
+
+</body>
+</html>

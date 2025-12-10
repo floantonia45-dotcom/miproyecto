@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NutriFit - Login y Registro</title>
+    <style>
+        .titulo-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 30px;
+            font-family: Georgia, serif;
+        }
+
+        .icono-aguacate {
+            height: 50px;
+        }
+
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#73b7d9;
+              
+        }
+
+      
+        /* === encabezado === */
+        .main-header {
+            
+            display: flex;
+            background-color: white;
+            
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0 0 0 100px;
+            padding: 0;
+            display: flex;
+           gap:40px;
+           
+        }
+
+       
+        .main-nav ul li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #030303;
+            
+            
+        }
+        .main-nav a:hover {
+            color: #29de38;
+        }
+
+       
+
+        /* Contenedor de los botones */
+        .auth-nav {
+            display: flex;
+            gap: 15px;              /* Separación pequeña entre botones */
+            margin-left: auto;      /* Empuja el grupo de botones hacia la derecha */
+            align-items: center;
+            
+        }
+       
+
+        /* Estilo de los botones */
+        .auth-nav button {
+            background-color: transparent;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            transition: 0.3s;
+        }
+
+        .auth-nav button:hover {
+            background-color: #2da866;
+            color: white;
+        }
+
+        
+       
+
+       /* parte de la mitad*/
+        .hero-section {
+            
+            display: flex;
+            padding: 50px 0;
+            margin-bottom: 30px;
+        }
+       
+        .hero-content {
+            flex: 2;
+            padding-left: 50px; /* Margen del contenido principal */
+           
+        }
+
+        .hero-content h1 {
+            font-size: 3.2em;
+            
+            line-height: 1.1;
+        }
+
+       
+        .btn-articles {
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px; 
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-articles:hover {
+            background-color: #2da866;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 50px;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: 300px;
+            border-radius: 10px; /* Bordes suaves para la imagen */
+            
+        }
+
+      
+        /* === Articulos destacados === */
+       
+        .featured-articles {
+            
+            padding: 30px 0 50px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+           
+        }
+
+        .article-card {
+            background-color: white;
+            border-radius: 8px;
+            width: 380px;
+            height: 200px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+       
+        .article-card-content{
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #030303;
+            font-weight: 600;
+            font-size: 0.9em;
+          
+        }
+
+       
+
+        .article-card-content h3 a{
+            font-size: 1.2em;
+            text-decoration: none;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .article-card-content p {
+            font-size: 0.9em;
+            
+        }
+        .video-card {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+
+      
+        /* recetas saludables */
+        
+        .recipes-section {
+            background-color: #1a4480;
+            padding: 20px 0;
+            text-align: center;
+            
+        }
+
+        .recipes-section h2 {
+            font-size: 2.5em;
+           
+          
+        }
+        
+       
+        .recipe-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .recipe-card {
+            width: 200px;
+            border-radius: 10px;
+            background-color: white;
+            text-align: center;
+            padding-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+             
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .recipe-card .recipe-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px 0px 0;
+        }
+
+        .recipe-card h3 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        /* conocenos mas */
+    
+       .about-section {
+            background-image: url(https://media.istockphoto.com/id/1457889029/es/foto/grupo-de-alimentos-con-alto-contenido-de-fibra-diet%C3%A9tica-dispuestos-uno-al-lado-del-otro.jpg?s=612x612&w=0&k=20&c=fGmnVlAU6yDfG29kEMoNZg28DWA5I_CjprvK2L1HhT8=);
+            background-repeat: no-repeat;
+            background-size: cover;  
+            height: 400px;                  /* Altura similar a la de tu segunda imagen */
+            display: flex;                  /* Para alinear el cuadro dentro */
+            align-items: center;            /* Centrar verticalmente */
+            padding-left: 20px;   
+            width: 100%;
+            margin-top: 50px;          
+       }
+
+        .about-content-container {
+            width: 300px;                    /* Tamaño del cuadro más pequeño */
+            background-color: white; 
+            padding: 15px;                   /* Espacio interno */
+        }
+
+        .about-content-container h2 {
+            margin: 0 0 10px 0;
+            font-size: 23px;                 /* Tamaño similar al de la segunda imagen */
+        }
+
+        .about-content-container p {
+            margin: 0 0 20px 0;
+            font-size: 20px;
+        }
+
+        /* BOTÓN */
+        .button-blue {
+            width: 150px;
+            height: 35px;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            outline: none;
+            border-radius: 5px;
+            z-index: 0;
+            background: #fff;
+            overflow: hidden;
+            border: 2px solid #2da866;
+            color: #2da866;
+            margin-top: 5px;
+            font-size: 1em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .button-blue:hover {
+            color: #f9f9f9;
+        }
+
+        .button-blue::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            transition: all 0.3s ease;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: #2da866;
+        }
+
+        .button-blue:hover::after {
+            width: 100%;
+        }
+
+        footer{
+             text-align: center;
+             padding: 25px; 
+             margin-top: 50px; 
+             font-size: 1em; 
+             background-color: #f0f0f0; 
+             
+        }
+    </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRI FIT - Acceso</title>
+    </head>
+<body>
+     <header class="main-header container">
+        <div class="header-left">
+            <h1 class="titulo-logo">
+                Nutri Fit
+                <!-- IMAGEN MODIFICADA: quitado static, puesta URL -->
+                <img src="https://thumbs.dreamstime.com/b/dibujo-de-aguacate-icono-negro-aislado-sobre-fondo-blanco-plano-animado-vector-ilustraci%C3%B3n-comida-saludable-fruta-tropical-210907294.jpg" class="icono-aguacate">
+            </h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Guías y rutinas</a></li>
+                    <li><a href="#">Artículos y Multimedia</a></li>
+                    <li><a href="{% url 'index4' %}">Recetas</a></li>
+                </ul>
+            </nav>
+        </div>
+       <div class="auth-nav">
+            <a href="{% url 'index2' %}?form=register">
+                <button class="register">Inscribirse</button>
+            </a>
+
+            <a href="{% url 'index2' %}?form=login">
+                <button class="register">Iniciar sesión</button>
+            </a>
+        </div>
+
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content container">
+                <h1>El comienzo de la salud es la nutrición</h1>
+                <p>Descubre cómo comer sano, mantenerte en forma y mejorar tu bienestar</p>
+                <a href="#" class="btn-articles">Últimos artículos</a>
+            </div>
+            <div class="hero-image">
+                <!-- IMAGEN MODIFICADA: quitado static, puesta URL -->
+                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&h=300&fit=crop" alt="Mujer sonriendo con un tazón de ensalada saludable">
+            </div>
+        </section>
+        <section class="featured-articles container">
+            <div class="article-card">
+            
+                <div class="article-card-content">
+                    <h3><a href="https://www.youtube.com/watch?v=deAK4aO80PY">Mercados de agricultores: frescos, nutritivos y locales</a></h3>
+                    
+                </div>
+            </div>
+
+            <div class="article-card">
+        
+                <div class="article-card-content">
+                    <h3><a href="https://www.youtube.com/watch?v=DDnETndcY2A">Seminario web sobre etiquetas nutricionales</a></h3>
+                </div>
+            </div> 
+        </section>
+
+
+        <section class="recipes-section">
+            <div class="container">
+                <h2>Recetas saludables</h2>
+                <div class="recipe-grid">
+                    <div class="recipe-card">
+                        <!-- IMAGEN MODIFICADA: quitado static, puesta URL -->
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=150&fit=crop" alt="Recetas bajas en calorías" class="recipe-img">
+                        <h3>Bajas calorías</h3>
+                    </div>
+                    <div class="recipe-card">
+                        <!-- IMAGEN MODIFICADA: quitado static, puesta URL -->
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=150&fit=crop" alt="Recetas veganas" class="recipe-img">
+                        <h3>Vegana</h3>
+                    </div>
+                    <div class="recipe-card">
+                        <!-- IMAGEN MODIFICADA: quitado static, puesta URL -->
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=200&h=150&fit=crop" alt="Ideas de desayuno" class="recipe-img">
+                        <h3>Desayuno</h3>
+                    </div>
+                    <div class="recipe-card">
+                        <!-- IMAGEN MODIFICADA: quitado static, puesta URL -->
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=200&h=150&fit=crop" alt="Opciones de snack" class="recipe-img">
+                        <h3>Snack</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="about-content-container">
+                <h2>Conocemos un poco más</h2>
+                <p>para mantenerse informad@ sobre nuestros recursos y estilo de vida.</p>
+              <a href="{% url 'index3' %}">
+                <button class="button-blue">Nuestra Historia</button>
+               </a>
+            </div>
+            
+        </section>
+
+    </main>
+
+    <footer>
+         2023 Nutri Fit. Todos los derechos reservados.
+    </footer>
+</body>
+</html>
